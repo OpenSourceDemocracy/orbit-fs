@@ -1,0 +1,6 @@
+node_modules/
+orbitdb/
+built/
+.ipfs/
+.alm/
+.test_keystore/

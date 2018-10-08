@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+        "outDir": "./built/",
+        "sourceMap": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "target": "es6",
+        "lib":["es6","dom","es2017"],
+        "experimentalDecorators": true
+    },
+    "include": [
+        "./src/**/*"
+    ]
+}
