@@ -26,21 +26,21 @@
   "homepage": "https://github.com/OpenSourceDemocracy/orbit-fs#readme",
   "devDependencies": {
     "@types/ipfs": "git+https://github.com/survirtual/types-ipfs.git",
-    "@types/node": "^10.9.4",
-    "ipfs": "^0.32.0",
-    "kbpgp": "^2.0.80",
+    "@types/node": "^10.12.5",
+    "ipfs": "^0.32.3",
+    "kbpgp": "^2.0.82",
     "orbit-db": "^0.19.9",
-    "ts-loader": "^5.2.1",
-    "typescript": "^3.1.1",
-    "webpack": "^4.20.2",
+    "ts-loader": "^5.3.0",
+    "typescript": "^3.1.6",
+    "webpack": "^4.25.1",
     "webpack-cli": "^3.1.2"
   },
   "dependencies": {
     "@types/orbit-db": "git+https://github.com/willemneal/types-orbit-db.git",
     "html-webpack-plugin": "^3.2.0",
     "orbit-db-keystore": "git+https://github.com/OpenSourceDemocracy/orbit-db-keystore.git",
-    "rdflib": "^0.19.0",
-    "solid-auth-client": "^2.2.5",
+    "rdflib": "^0.19.1",
+    "solid-auth-client": "^2.2.11",
     "store2": "^2.7.0"
   }
 }
