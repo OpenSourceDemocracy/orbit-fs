@@ -27,7 +27,7 @@
   "devDependencies": {
     "@types/ipfs": "git+https://github.com/survirtual/types-ipfs.git",
     "@types/node": "^10.12.5",
-    "ipfs": "^0.33.1",
+    "ipfs": "^0.34.4",
     "kbpgp": "^2.0.82",
     "orbit-db": "^0.19.9",
     "ts-loader": "^5.3.0",
