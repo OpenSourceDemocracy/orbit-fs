@@ -22,7 +22,7 @@ export class Store {
     }
 }
 
-export class EventStore<T> extends Store{
+export class EventStore<T> extends Store {
 
   get db(): Orbit_db.Eventstore {
     return (this._db as Orbit_db.Eventstore);

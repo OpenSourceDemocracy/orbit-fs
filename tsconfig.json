@@ -5,10 +5,11 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "target": "es6",
-        "lib":["es6","dom","es2017"],
+        "lib": ["es6","dom","es2017", "ES2015"],
         "experimentalDecorators": true
     },
     "include": [
-        "./src/**/*"
+        "./src/**/*",
+        "./test/**/*"
     ]
 }

@@ -1,0 +1,3 @@
+[submodule "BrowserFS"]
+	path = BrowserFS
+	url = git@github.com:willemneal/BrowserFS

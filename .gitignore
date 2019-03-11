@@ -5,4 +5,7 @@ built/
 .alm/
 .test_keystore/
 
+\.orbitdb/
+Qm*/
+
 \.temp/

@@ -121,7 +121,8 @@ export class Account {
       exportedKey.data = exportedKey.data.data;
     await this.keystore.importKey(exportedKey, password);
     this.orbitdb = new OrbitDB(this.ipfs, this.DBdirectory,
-      {peerId: exportedKey.id, keystore: this.orbitdb.keystore});
+      {peerId: exportedKey.id,
+        keystore: this.orbitdb.keystore});
     await this.saveAccount();
   } catch(err){
       console.log(err);
@@ -129,7 +130,7 @@ export class Account {
   }
 
   async getPrivateFS(key: string){
-    return OrbitFS.create(this.orbitdb, "ROOT", [key]);
+    return OrbitFS.create("ROOT", [key], this.orbitdb);
   }
 
   sign(data) {
