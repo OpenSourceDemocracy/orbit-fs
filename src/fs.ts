@@ -18,8 +18,7 @@ export interface StatInfo {
 
 export class OrbitFS {
   mfs: any;
-  store: EventStore<any>;
-  ipfs: ipfs;
+  // store: EventStore<any>;
   RootKey = new Key("/");
   repo: any;
   datastore: any;
@@ -29,34 +28,34 @@ export class OrbitFS {
   static DEFAULT_DB_ADDRESS = "defualt";
   syncRoot: string;
 
-  constructor(public orbitdb: Orbitdb, store: EventStore<any>, options?: any) {
-    this.ipfs = orbitdb._ipfs;
+  constructor(public ipfs: ipfs, store: EventStore<any>, options?: any) {
     // this.RootKey = new Key(store.address);
-    this.mfs = mfs(this.ipfs, { ...options });
     this.repo = (this.ipfs as any)._repo;
+    let ipld = (<any>ipfs)._ipld;
+    this.mfs = mfs({repo:this.repo,ipld});
     this.datastore = this.repo && this.repo.datastore;
-    this.store = store;
+    // this.store = store;
     this.syncRoot = OrbitFS.EMPTY_DIRECTORY_HASH;
 
-    this.store.events.on("ready", async (dbname: string) => {
-      debugger;
-      let root = this.store.peek();
-      if (root) {
-        await this.updateRoot(root);
-      }
-    });
-    this.store.events.on("replicated", async (address: string) => {
-      debugger;
-      await this.updateRoot(this.store.peek());
-      console.log(await this.Root());
-    });
-    this.store.load();
+    // this.store.events.on("ready", async (dbname: string) => {
+    //   debugger;
+    //   let root = this.store.peek();
+    //   if (root) {
+    //     await this.updateRoot(root);
+    //   }
+    // });
+    // this.store.events.on("replicated", async (address: string) => {
+    //   debugger;
+    //   await this.updateRoot(this.store.peek());
+    //   console.log(await this.Root());
+    // });
+    // this.store.load();
 
   }
 
-  async commit() {
-    await this.store.add(await this.Root());
-  }
+  // async commit() {
+  //   await this.store.add(await this.Root());
+  // }
 
   async Root(): Promise<string> {
     return (await this.stat("/")).hash;
@@ -75,16 +74,16 @@ export class OrbitFS {
                 reject(err);
               }
               else {
-                resolve();
                 this.syncRoot = bs58.encode(buffer);
+                resolve();
               }
               })
     );
   }
 
-  id() {
-    return this.orbitdb.id;
-  }
+  // id() {
+  //   return this.orbitdb.id;
+  // }
 
   async cp(from: Path, to: Path, options?: any) {
     return this.mfs.cp([from, to], options);
@@ -144,29 +143,17 @@ export class OrbitFS {
     return this.mfs.ls(path);
   }
 
-  static async createDefault(address: string = OrbitFS.DEFAULT_DB_ADDRESS){
-    let db = await DefaultOrbitdb.create();
-    return await OrbitFS.create(address, ["*"], db);
-  }
-
   static async fromIPFS(ipfs: ipfs, address: string = OrbitFS.DEFAULT_DB_ADDRESS) {
-    let db = await DefaultOrbitdb.create({ipfs:ipfs});
-    return await OrbitFS.create(address, ["*"], db);
+    return await OrbitFS.create(ipfs, address);
   }
 
   static async create(
+    ipfs: ipfs,
     address: string,
-    permission = ["*"],
-    orbitdb?: Orbitdb,
     options?: any
   ) {
-    let eventStore = new EventStore(
-      await orbitdb.eventlog(address, {
-        write: permission,
-        sync: true
-      })
-    );
-    let fs = new OrbitFS(orbitdb, eventStore, options);
+
+    let fs = new OrbitFS(ipfs, options);
     // await fs.store.load();
     return fs;
   }

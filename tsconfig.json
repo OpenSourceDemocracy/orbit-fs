@@ -5,11 +5,14 @@
         "module": "commonjs",
         "moduleResolution": "node",
         "target": "es6",
-        "lib": ["es6","dom","es2017", "ES2015"],
+        "lib": ["es6","dom","es2017", "ES2015", "es2017.typedarrays", "esnext.bigint"],
         "experimentalDecorators": true
     },
     "include": [
         "./src/**/*",
         "./test/**/*"
+    ],
+    "exclude" : [
+      "./node_modules/**/*.ts"
     ]
 }

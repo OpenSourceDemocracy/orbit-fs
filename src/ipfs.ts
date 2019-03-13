@@ -1,5 +1,5 @@
 import * as IPFS from 'ipfs';
-let ipfsAPI = require('ipfs-api');
+let ipfsAPI = require('ipfs-http-client');
 let Repo = require('ipfs-repo');
 let Memory = require('interface-datastore').MemoryDatastore;
 let Lock = require('ipfs-repo/src/lock-memory');
@@ -28,7 +28,7 @@ export class DefaultIpfs {
       Addresses: {
         Swarm: [
           '/dns4/ws-star1.par.dwebops.pub/tcp/443/wss/p2p-websocket-star/',
-          // '/dns4/spacestation.hopto.org/tcp/9090/wss/p2p-websocket-star',
+          '/dns4/spacestation.hopto.org/tcp/9090/wss/p2p-websocket-star',
         ],
       },
     },
@@ -103,6 +103,7 @@ export class DefaultOrbitdb {
     //   console.log(err);
     //   throw err;
     // }
+    debugger;
     return new Orbitdb(ipfs, orbitdir);
   }
 }

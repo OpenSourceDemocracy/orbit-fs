@@ -39,12 +39,17 @@
   "dependencies": {
     "@types/filesystem": "0.0.29",
     "@types/orbit-db": "git+https://github.com/willemneal/types-orbit-db.git",
-    "assemblyscript": "git+https://github.com/willemneal/assemblyscript.git#064056f60d30ad395c9fef42897895d7a79a26fa",
+    "@types/webassembly-js-api": "0.0.2",
+    "assemblyscript": "willemneal/assemblyscript",
     "html-webpack-plugin": "^3.2.0",
+    "ipfs-api": "^26.1.2",
     "ipfs-http-client": "^27.0.0",
+    "ipfs-mfs": "^0.9.2",
     "orbit-db-keystore": "git+https://github.com/OpenSourceDemocracy/orbit-db-keystore.git",
     "rdflib": "^0.19.1",
+    "save": "^2.3.3",
     "solid-auth-client": "^2.2.11",
-    "store2": "^2.7.0"
+    "store2": "^2.7.0",
+    "ts-node": "^8.0.3"
   }
 }
